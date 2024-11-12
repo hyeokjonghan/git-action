@@ -19,7 +19,12 @@ jobs:
           echo "Tag name is"
           echo ${{ github.ref }}
 
-    - name: Build and tag image
+    - name: This is prod
+      if:  ${{ !contains(github.ref_name, 'dev') }}
+      run: |
+          echo "This is a prod tag."
+
+    - name: This is dev
       if: contains(github.ref_name, 'dev')
       run: |
           echo "This is a dev tag."
