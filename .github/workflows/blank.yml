@@ -16,4 +16,11 @@ jobs:
 
     - name: Build and tag image
       run: |
-        echo ${{ github.ref }}
+          echo "Tag name is"
+          echo ${{ github.ref }}
+
+    - name: Build and tag image
+      if: contains(github.ref_name, 'dev')
+      run: |
+          echo "This is a dev tag."
+        
